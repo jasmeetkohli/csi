@@ -109,6 +109,27 @@ Route::get('/card', ['middleware'=>'auth.individual', 'as' => 'card', 'uses'=>'U
 
 
 
+//======================Team -3 ============================*/
+
+
+//Route::get('/grant/{v?}', ['$v=null','as'=>'grantformula','middleware'=>'auth','uses'=>'UserDashboardController@researchGrant_index']);	
+
+Route::get('/grantsform', ['middleware'=>'auth','uses'=>'ResearchGrantController@grantsform']);	
+Route::post('/grantsform', ['middleware'=>'auth','uses'=>'ResearchGrantController@grantsform_thankyou']);	
+
+
+
+
+/*
+
+=======================End of Team-3 routes==========================
+
+
+*/
+
+
+
+
 // Registration routes...
 // Route::group(['prefix' => 'admin'], function() {
 // 	// Authentication routes...
