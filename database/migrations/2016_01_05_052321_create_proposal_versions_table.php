@@ -21,7 +21,7 @@ class CreateProposalVersionsTable extends Migration
             $table->bigInteger('proposal_id')->unsigned();
             $table->tinyInteger('research_status')->unsigned();
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('proposal_id')
                     ->references('id')->on('proposals')
                     ->onDelete('CASCADE')

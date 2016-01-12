@@ -11,10 +11,10 @@ class CreateResearchGrantRequest extends Request
                                   'grantProposal'=>'required|mimes:pdf',
                                   'fieldName'=>'required',
                                   'title_g'=>'required',
-                                  'teamMembers'=>'required',
+                                  'teamMembers'=>'required|numeric',
                                   'researchPlace'=>'required',
-                                  //'duration'=>'required',
-                                  'grantNeeded'=>'required',
+                                  'duration'=>'required',
+                                  'grantNeeded'=>'required|numeric',
                                   'propDescription'=>'required'
 
                             ];

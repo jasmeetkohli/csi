@@ -109,7 +109,7 @@ Route::get('/card', ['middleware'=>'auth.individual', 'as' => 'card', 'uses'=>'U
 
 
 
-//======================Team -3 ============================*/
+//====================== Team -3 ============================*/
 
 
 //Route::get('/grant/{v?}', ['$v=null','as'=>'grantformula','middleware'=>'auth','uses'=>'UserDashboardController@researchGrant_index']);	
@@ -117,9 +117,21 @@ Route::get('/card', ['middleware'=>'auth.individual', 'as' => 'card', 'uses'=>'U
 Route::get('/grantsform', ['middleware'=>'auth','uses'=>'ResearchGrantController@grantsform']);	
 Route::post('/grantsform', ['middleware'=>'auth','uses'=>'ResearchGrantController@grantsform_thankyou']);	
 
+Route::get('/allgrants', ['middleware'=>'auth','uses'=>'ResearchGrantController@allgrants']);	
+Route::get('/grantversions/{v?}', ['middleware'=>'auth','uses'=>'ResearchGrantController@grantversions']);	
+Route::post('/grantversions/{v?}', ['middleware'=>'auth','uses'=>'ResearchGrantController@newversion']);	
 
 
+Route::group(['prefix'=> 'admin' ], function(){
+			Route::get('/admin_grants', ['middleware'=>'auth.admin','uses'=>'adminResearchGrantController@allgrants']);	
 
+			Route::get('/admin_version1/{v?}', ['middleware'=>'auth.admin', 'as' => 'commentsAndStatus',  'uses'=>'adminResearchGrantController@commentsandstatus']);	
+			Route::post('/admin_version/{id?}', ['middleware'=>'auth.admin', 'as' => 'makechanges', 'uses'=>'adminResearchGrantController@makechanges']);	
+
+			Route::get('/admin_viewfile/{v?}', ['middleware'=>'auth.admin','uses'=>'adminResearchGrantController@viewfile']);	
+
+
+});
 /*
 
 =======================End of Team-3 routes==========================

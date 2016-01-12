@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('backend.master')
 @section('title', 'Research Grant')
 @section('main')
 	<section id="main">
@@ -6,7 +6,7 @@
    			<div class="row">
    				<div class="col-md-12">
    					<div>
-					  	<h1 class="section-header-style">research grant form</h1>
+					  	<h1 class="section-header-style">Research Proposals</h1>
 					</div>
 
 					@if ( $errors->any() )
@@ -22,27 +22,50 @@
 					  <div class="col-md-8">
 					  	<h1 id="stepText"> <small id="stepSubText"></small></h1>
 					  </div>
-					  <div class="col-md-4">
-					  	<p class="pull-right" style="    font-size: 14px;    margin: 35px 15px; color: RED;font-weight: bold;letter-spacing: 1px;">field with * are required</p>
-					  </div>
 					</div>
-   					{!! Form::open(['url'=>'grantsform','files' => true]) !!}
+					
+					
+					@foreach($arr as $a)
+					<br>
+					
+   					{!! Form::open(['files' => true,'method' => 'get', 'class' => 'form-inline']) !!}
 					  <div class="steps">
 																	
 						<div class="form-group">
-							<label for="team_members" class="req">Number of Team Members*</label>
-							{!! Form::text('teamMembers', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
-						</div>						
+							<label for="title">Title: {{$a->title}}</label>
+							
+						</div>	
+						<br>
 						<div class="form-group">
-							<label for="research_place" class="req">Place of Research</label>
-							{!! Form::text('researchPlace', null, ['class' => 'form-control', 'placeholder' => 'Address']) !!}
+							<label for="current_status">Current Status:  </label>
+							@if($a->research_status==0)
+           										 new/pending
+           									           									
+           									@elseif($a->research_status==1)
+            								     changes required
+            								
+        									
+        									@elseif($a->research_status==2)
+            									 accepted
+            								           								
+            								@elseif($a->research_status==3)
+            									 rejected;
+            								@endif
+
+							
+
 						</div>
+						<br>					
 						<div class="form-group">
-							<label for="duration_period" class="req">Duration of Research*</label>
-							{!! Form::text('duration', null, ['class' => 'form-control', 'id' => 'grantDuration','placeholder'=>'dd/mm/yy']) !!}
-							<p class="help-block">Tentative Date</p>						
+							<label for="member_ID">Member ID: </label> 
+							{!! Form::label('memberID',$a->userid) !!}
 						</div>
+						<br>
 						<div class="form-group">
+							<label for="member_name">Member Name:  </label>
+							{!! Form::label('memberName', $a->email) !!}						
+						</div>
+						<!--<div class="form-group">
 							<label for="grant_needed" class="req">Grant needed*</label>
 							{!! Form::text('grantNeeded', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
 						</div>					  	
@@ -66,24 +89,20 @@
 						<p class="help-block">Please upload your Proposal.(file type allowed is pdf)</p>
 					</div>
 							<div class="btn-group btn-group-justified">
-		<button class="col-md-offset-4 btn btn-default previous">Previous</button>
-		<button class="btn btn-default" name="submit" id="submit">Submit</button>
-	</div>						
+		<button class="col-md-offset-4 btn btn-default previous">Previous</button>-->
+				<br><br><a href="{{action('adminResearchGrantController@commentsandstatus',[$a->proposal_id])}}">update</a>
+						
+		
 					  </div> 
 					 
 
 
-
+					  <hr>
 					{!! Form::Close() !!}
+					@endforeach
    				</div>
    			</div>
    		</div>
 
    	</section>
-@endsection
-
-
-@section('footer-scripts')
-	<script src={{ asset("js/validateit.js") }}></script>
-	<script src={{ asset('js/researchgrant_form.js') }}></script>
 @endsection

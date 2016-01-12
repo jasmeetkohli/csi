@@ -26,6 +26,7 @@ class CreateProposalsTable extends Migration
             $table->bigInteger('userid')->unsigned();
             $table->date('date_of_approval');
             $table->integer('granted_amount')->unsignd()->nullable();
+            
            
             $table->timestamps();
 

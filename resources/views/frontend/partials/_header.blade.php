@@ -96,13 +96,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>Research Grants <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href={{ route('profile') }}>Create</a>
+                                    <a href="{{ action('ResearchGrantController@grantsform') }}">Create</a>
                                 </li>
                                 <li>
-                                    <a href={{ route('profile') }}>View All</a>
-                                </li>
-                                <li>
-                                    <a href={{ route('profile') }}>My Grants</a>
+                                    <a href="{{ action('ResearchGrantController@allgrants') }}">View All</a>
                                 </li>
                                 
                             </ul>

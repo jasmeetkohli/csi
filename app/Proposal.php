@@ -13,7 +13,8 @@ class Proposal extends Model
                             'end_date_of_proposal', 
                             'proposed_amount', 
                             'description', 
-                            'userid'
+                            'userid',
+                            'num_of_versions'
                             ];
 
    // protected $hidden = ['date_of_approval', 'granted_amount'];
